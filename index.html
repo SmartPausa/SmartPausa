@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SmartPausa</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div id="notificacion" class="notificacion">
+⏰ ¡Es hora de tu pausa inteligente!
+Haz clic para elegir tu ejercicio
+</div>
+
+<div class="container">
+
+<img src="logo.png" class="logo">
+
+<div class="circle">
+
+<svg width="220" height="220">
+
+<circle
+cx="110"
+cy="110"
+r="100"
+stroke="#e6e6e6"
+stroke-width="10"
+fill="none"
+/>
+
+<circle
+id="progress"
+cx="110"
+cy="110"
+r="100"
+stroke="#2EC4B6"
+stroke-width="10"
+fill="none"
+stroke-linecap="round"
+transform="rotate(-90 110 110)"
+/>
+
+</svg>
+
+<div class="timer">
+
+<h1 id="time">30:00</h1>
+<p id="modoTexto">Tiempo de estudio</p>
+
+</div>
+
+</div>
+
+<div class="botones">
+
+<button onclick="iniciar()">Iniciar</button>
+<button onclick="pausar()">Pausar</button>
+<button onclick="reiniciar()">Reiniciar</button>
+
+</div>
+
+<h3>Modo</h3>
+
+<select id="modo">
+
+<option value="estudio">📘 Estudio</option>
+<option value="tarea">📝 Tarea</option>
+<option value="examen">📚 Examen</option>
+<option value="prueba">🧪 Prueba</option>
+
+</select>
+
+<h3>Tiempo</h3>
+
+<select id="tiempoSelector" onchange="cambiarTiempo()">
+
+<option value="5">5 segundos</option>
+<option value="10">10 segundos</option>
+
+<option value="900">15 minutos</option>
+<option value="1800" selected>30 minutos</option>
+<option value="2700">45 minutos</option>
+
+<option value="personalizado">✏️ Personalizado</option>
+
+</select>
+
+<div id="tiempoPersonalizadoBox" style="display:none; margin-top:10px;">
+
+<input
+type="number"
+id="tiempoPersonalizado"
+min="1"
+max="90"
+placeholder="Ingrese de 1 a 90 minutos"
+>
+
+</div>
+
+<p class="frase" id="frase"></p>
+
+<label>
+<input type="checkbox" id="sonidoCheck" checked>
+Activar sonido
+</label>
+
+<p>Sesiones completadas: <span id="sesiones">0</span></p>
+
+</div>
+
+<div id="pausa" class="pausa">
+
+<img src="logo.png" class="logo">
+
+<h2 class="tituloPausa">✨ ¡Es hora de tu pausa inteligente! ✨</h2>
+
+<p class="subtitulo">Elige un ejercicio</p>
+
+<div class="contenedorEjercicios">
+
+<div class="tarjeta" onclick="mostrarEjercicio('cuello')">
+<img src="cuello.png">
+<h3>Estiramiento de cuello</h3>
+</div>
+
+<div class="tarjeta" onclick="mostrarEjercicio('hombros')">
+<img src="hombros.png">
+<h3>Movimiento de hombros</h3>
+</div>
+
+<div class="tarjeta" onclick="mostrarEjercicio('respiracion')">
+<img src="respiracion.png">
+<h3>Respiración profunda</h3>
+</div>
+
+<div class="tarjeta" onclick="mostrarEjercicio('visual')">
+<img src="visual.png">
+<h3>Descanso visual</h3>
+</div>
+
+<div class="tarjeta" onclick="mostrarEjercicio('manos')">
+<img src="manos.png">
+<h3>Estiramiento de manos</h3>
+</div>
+
+<div class="tarjeta" onclick="mostrarEjercicio('espalda')">
+<img src="espalda.png">
+<h3>Estiramiento de espalda</h3>
+</div>
+
+</div>
+
+<div id="detalleEjercicio"></div>
+
+<button class="btnDescanso" onclick="volver()">Ya descansé</button>
+
+</div>
+
+<audio id="sonido" src="sonido.mp3"></audio>
+
+<script src="script.js"></script>
+
+</body>
+</html>
